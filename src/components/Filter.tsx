@@ -30,7 +30,7 @@ const Filter = async () => {
           <option value="digital">Digital</option>
         </select> */}
         {/* TODO: Filter Categories */}
-        <select
+        {/* <select
           name="cat"
           className="py-2 px-4 rounded-2xl text-xs font-medium bg-[#EBEDED]"
           onChange={handleFilterChange}
@@ -38,7 +38,7 @@ const Filter = async () => {
           <option>Category</option>
           <option value="">New Arrival</option>
           <option value="">Popular</option>
-        </select>
+        </select> */}
         {/* <select
           name=""
           id=""
