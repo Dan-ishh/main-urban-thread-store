@@ -2,8 +2,16 @@ import React from "react";
 import Image from "next/image";
 import Filter from "@/components/Filter";
 import ProductList from "@/components/ProductList";
+import { wixClientServer } from "@/lib/wixClientServer";
+import { Suspense } from "react";
+import Skeleton from "@/components/Skeleton";
 
-const ListPage = () => {
+const ListPage = async ({ searchParams }: { searchParams: any }) => {
+  const wixClient = await wixClientServer();
+
+  const cat = await wixClient.collections.getCollectionBySlug(
+    searchParams.cat || "all-products"
+  );
   return (
     <div className="px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative">
       {/* CAMPAIGN */}
@@ -31,9 +39,18 @@ const ListPage = () => {
       {/* FILTER COMPONENT */}
       <Filter />
 
-      <h1 className="text-2xl mt-12 font-semibold">Clothes for you!</h1>
+      <h1 className="text-2xl mt-12 font-semibold">
+        {cat?.collection?.name} for you!
+      </h1>
       {/* PRODUCT */}
-      <ProductList />
+      <Suspense fallback={<Skeleton />}>
+        <ProductList
+          categoryId={
+            cat.collection?._id || "00000000-000000-000000-000000000001"
+          }
+          searchParams={searchParams}
+        />
+      </Suspense>
     </div>
   );
 };

@@ -1,120 +1,80 @@
 "use client";
 
-import React from "react";
-import {
-  Select,
-  SelectContent,
-  SelectGroup,
-  SelectItem,
-  SelectLabel,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 
 const Filter = () => {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const { replace } = useRouter();
+
+  const handleFilterChange = (
+    e: React.ChangeEvent<HTMLSelectElement | HTMLInputElement>
+  ) => {
+    const { name, value } = e.target;
+    const params = new URLSearchParams(searchParams);
+    params.set(name, value);
+    replace(`${pathname}?${params.toString()}`);
+  };
+
   return (
-    <div className="mt-12 sm:flex-col flex justify-between gap-1">
-      <div className="flex gap-4 flex-wrap">
-        {/* <select
+    <div className="mt-12 flex justify-between">
+      <div className="flex gap-6 flex-wrap">
+        <select
           name="type"
           id=""
-          className=" py-2 px-4 rounded-2xl text-xs font-medium bg-gray-100 appearance-none"
+          className="py-2 px-4 rounded-2xl text-xs font-medium bg-[#EBEDED]"
+          onChange={handleFilterChange}
         >
           <option>Type</option>
-          <option value="Physical">Physical</option>
-          <option value="Digital">Digital</option>
-        </select> */}
-
-        <Select>
-          <SelectTrigger className="w-full md:w-[100px]">
-            <SelectValue placeholder="Type" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectLabel>Types</SelectLabel>
-              <SelectItem value="Physical">Physical</SelectItem>
-              <SelectItem value="Digital">Digital</SelectItem>
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-
+          <option value="physical">Physical</option>
+          <option value="digital">Digital</option>
+        </select>
         <input
-          type="number"
+          type="text"
           name="min"
-          placeholder="Min Price"
-          className="text-xs rounded-md p-2 w-full md:w-24 ring ring-gray-200"
+          placeholder="min price"
+          className="text-xs rounded-2xl pl-2 w-24 ring-1 ring-gray-400"
+          onChange={handleFilterChange}
         />
         <input
-          type="number"
+          type="text"
           name="max"
-          placeholder="Max Price"
-          className="text-xs rounded-md p-2 w-full md:w-24 ring ring-gray-200"
+          placeholder="max price"
+          className="text-xs rounded-2xl pl-2 w-24 ring-1 ring-gray-400"
+          onChange={handleFilterChange}
         />
-
-        <Select>
-          <SelectTrigger className="w-[80px]">
-            <SelectValue placeholder="Size" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectLabel>Size</SelectLabel>
-              <SelectItem value="Physical">Physical</SelectItem>
-              <SelectItem value="Digital">Digital</SelectItem>
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-        <Select>
-          <SelectTrigger className="w-[80px]">
-            <SelectValue placeholder="Color" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectLabel>Color</SelectLabel>
-              <SelectItem value="Physical">Physical</SelectItem>
-              <SelectItem value="Digital">Digital</SelectItem>
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-        <Select>
-          <SelectTrigger className="w-[110px]">
-            <SelectValue placeholder="Category" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectLabel>Category</SelectLabel>
-              <SelectItem value="Physical">Physical</SelectItem>
-              <SelectItem value="Digital">Digital</SelectItem>
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-        <Select>
-          <SelectTrigger className="w-[110px]">
-            <SelectValue placeholder="All Filters" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectLabel>All Filters</SelectLabel>
-              <SelectItem value="Physical">Physical</SelectItem>
-              <SelectItem value="Digital">Digital</SelectItem>
-            </SelectGroup>
-          </SelectContent>
-        </Select>
-        <Select>
-          <SelectTrigger className="w-[180px]">
-            <SelectValue placeholder="Sort By" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectGroup>
-              <SelectLabel>Sort By</SelectLabel>
-              <SelectItem value="lowtohigh">Price (low to high)</SelectItem>
-              <SelectItem value="hightolow">Price (high to low)</SelectItem>
-              <SelectItem value="newest">Newest</SelectItem>
-              <SelectItem value="oldest">Oldest</SelectItem>
-            </SelectGroup>
-          </SelectContent>
-        </Select>
+        {/* TODO: Filter Categories */}
+        <select
+          name="cat"
+          className="py-2 px-4 rounded-2xl text-xs font-medium bg-[#EBEDED]"
+          onChange={handleFilterChange}
+        >
+          <option>Category</option>
+          <option value="">New Arrival</option>
+          <option value="">Popular</option>
+        </select>
+        <select
+          name=""
+          id=""
+          className="py-2 px-4 rounded-2xl text-xs font-medium bg-[#EBEDED]"
+        >
+          <option>All Filters</option>
+        </select>
       </div>
-      <div></div>
+      <div className="">
+        <select
+          name="sort"
+          id=""
+          className="py-2 px-4 rounded-2xl text-xs font-medium bg-white ring-1 ring-gray-400"
+          onChange={handleFilterChange}
+        >
+          <option>Sort By</option>
+          <option value="asc price">Price (low to high)</option>
+          <option value="desc price">Price (high to low)</option>
+          <option value="asc lastUpdated">Newest</option>
+          <option value="desc lastUpdated">Oldest</option>
+        </select>
+      </div>
     </div>
   );
 };

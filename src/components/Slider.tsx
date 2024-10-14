@@ -1,3 +1,5 @@
+"use client";
+
 import React from "react";
 import { useEffect, useState } from "react";
 import Link from "next/link";
@@ -10,7 +12,7 @@ const slides = [
     description: "Sale! Up to 50% off!",
     img: "/img_hero.png",
     url: "/",
-    bg: "bg-gradient-to-r from-yellow-50 to-orange-100",
+    bg: "bg-gradient-to-r from-green-50 to-blue-100",
   },
   {
     id: 2,
@@ -18,7 +20,7 @@ const slides = [
     description: "Sale! Up to 50% off!",
     img: "/img_shirt.png",
     url: "/",
-    bg: "bg-gradient-to-r from-green-50 to-blue-100",
+    bg: "bg-gradient-to-r from-orange-50 to-gray-100",
   },
   {
     id: 3,
@@ -32,6 +34,7 @@ const slides = [
 
 const Slider = () => {
   const [current, setCurrent] = useState(0);
+
   useEffect(() => {
     const interval = setInterval(() => {
       setCurrent((prev) => (prev === slides?.length - 1 ? 0 : prev + 1));
