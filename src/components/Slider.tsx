@@ -4,6 +4,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const slides = [
   {
@@ -34,6 +35,7 @@ const slides = [
 
 const Slider = () => {
   const [current, setCurrent] = useState(0);
+  const router = useRouter();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -64,7 +66,10 @@ const Slider = () => {
                     {item?.title}
                   </h1>
                   <Link href={item?.url}>
-                    <button className="rounded-md bg-black text-white py-3 px-4">
+                    <button
+                      className="rounded-md bg-black text-white py-3 px-4"
+                      onClick={() => router.push("/list?cat=all-products")}
+                    >
                       Shop now!
                     </button>
                   </Link>

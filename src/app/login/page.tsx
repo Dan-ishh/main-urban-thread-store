@@ -102,6 +102,32 @@ const LoginPage = () => {
           wixClient.auth.setTokens(tokens);
           router.push("/");
           break;
+        // case LoginState.SUCCESS:
+        //   setMessage("Successful! You are being redirected.");
+
+        //   // Retrieve tokens and set them
+        //   const tokens = await wixClient.auth.getMemberTokensForDirectLogin(
+        //     response.data.sessionToken!
+        //   );
+
+        //   Cookies.set("refreshToken", JSON.stringify(tokens.refreshToken), {
+        //     expires: 2, // Store the token for 2 days
+        //   });
+        //   wixClient.auth.setTokens(tokens);
+
+        //   // Fetch the current member details using the members API
+        //   const member = await wixClient.members.getCurrentMember();
+
+        //   if (member && member.id) {
+        //     console.log("Logged in Member ID:", member.id);
+        //     // Store the member ID in cookies, local state, or context if needed
+        //     Cookies.set("memberId", member.id, { expires: 2 });
+        //   }
+
+        //   // Redirect to the home page or dashboard
+        //   router.push("/");
+        //   break;
+
         case LoginState.FAILURE:
           if (
             response.errorCode === "invalidEmail" ||
@@ -132,7 +158,7 @@ const LoginPage = () => {
 
   return (
     <div className="h-[calc(100vh-80px)] px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 flex items-center justify-center">
-      <form className="flex flex-col gap-8" onSubmit={handleSubmit}>
+      <form className="flex flex-col gap-8 w-[400px]" onSubmit={handleSubmit}>
         <h1 className="text-2xl font-semibold">{formTitle}</h1>
         {mode === MODE.REGISTER ? (
           <div className="flex flex-col gap-2">

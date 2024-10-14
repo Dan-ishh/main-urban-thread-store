@@ -6,8 +6,11 @@ import { wixClientServer } from "@/lib/wixClientServer";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
 import Reviews from "@/components/Reviews";
+import Skeleton from "@/components/Skeleton";
+import DOMPurify from "dompurify";
 
 const SinglePage = async ({ params }: { params: { slug: string } }) => {
+  console.log("inside");
   const wixClient = await wixClientServer();
 
   const products = await wixClient.products
@@ -15,11 +18,13 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
     .eq("slug", params.slug)
     .find();
 
+  console.log("Products", products);
   if (!products.items[0]) {
     return notFound();
   }
 
   const product = products.items[0];
+
   return (
     <div className="px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 relative flex flex-col lg:flex-row gap-16">
       {/* IMAGE */}
@@ -35,7 +40,14 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
         >
           {product.name}
         </h1>
-        <p className="text-gray-500">{product.description}</p>
+        <div
+          className="text-gray-800"
+          dangerouslySetInnerHTML={{
+            __html: product.description!,
+          }}
+        >
+          {/* {product.description} */}
+        </div>
         <div className="h-[2px] bg-gray-100"></div>
         {/* <div className="flex items-center gap-4">
           <h3 className="text-xl text-gray-500 line-through">$45</h3>
@@ -67,17 +79,30 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
             stockNumber={product.stock?.quantity || 0}
           />
         )}
-        <div className="h-[2px] bg-gray-100"></div>
-        {product.additionalInfoSections?.map((section: any) => (
-          <div className="text-sm" key={section.title}>
-            <h4 className="font-medium mb-4">{section.title}</h4>
-            <p>{section.description}</p>
-          </div>
-        ))}
+        {product.additionalInfoSections &&
+          product.additionalInfoSections.length > 0 && (
+            <div className="h-[2px] bg-gray-100"></div>
+          )}
+
+        {product.additionalInfoSections?.map((section: any) => {
+          console.log("section", section);
+          return (
+            <div className="text-sm" key={section.title}>
+              <h4 className="font-medium mb-4">{section.title}</h4>
+              <p
+              // dangerouslySetInnerHTML={{
+              //   __html: section?.description,
+              // }}
+              >
+                {section.description}
+              </p>
+            </div>
+          );
+        })}
         <div className="h-[2px] bg-gray-100" />
         {/* REVIEWS */}
-        <h1 className="text-2xl">User Reviews</h1>
-        <Suspense fallback="Loading...">
+
+        <Suspense fallback={<Skeleton />}>
           <Reviews productId={product._id!} />
         </Suspense>
       </div>

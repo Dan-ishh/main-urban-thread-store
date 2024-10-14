@@ -80,7 +80,7 @@ const CustomizeProducts = ({
                     key={choice.description}
                   >
                     {selected && (
-                      <div className="absolute w-10 h-10 rounded-full text-white bg-primary ring-2 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+                      <div className="absolute w-10 h-10 ring-primary rounded-full text-white ring-2 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
                     )}
                     {disabled && (
                       <div className="absolute w-10 h-[2px] text-white bg-gray-200 rotate-45 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />

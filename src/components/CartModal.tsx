@@ -28,7 +28,7 @@ const CartModal = () => {
           ecomCheckout: { checkoutId: checkout.checkoutId },
           callbacks: {
             postFlowUrl: window.location.origin,
-            thankYouPageUrl: `${window.location.origin}/success`,
+            // thankYouPageUrl: `${window.location.origin}/success`,
           },
         });
 
@@ -39,8 +39,6 @@ const CartModal = () => {
       console.log(err);
     }
   };
-
-  console.log(cart, "cart");
 
   return (
     <div className="absolute w-max  p-4 rounded-md shadow-[0_3px_10px_rgb(0,0,0,0.2)] bg-white top-12 right-0 flex flex-col gap-6 z-20">
@@ -115,9 +113,9 @@ const CartModal = () => {
               Shipping and taxes calculated at checkout.
             </p>
             <div className="flex justify-between text-sm">
-              <button className="rounded-md py-3 px-4 ring-1 ring-gray-300">
+              {/* <button className="rounded-md py-3 px-4 ring-1 ring-gray-300">
                 View Cart
-              </button>
+              </button> */}
               <button
                 className="rounded-md py-3 px-4 bg-black text-white disabled:cursor-not-allowed disabled:opacity-75"
                 disabled={isLoading}
