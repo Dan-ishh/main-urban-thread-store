@@ -37,21 +37,12 @@
       "static/chunks/442-544739ca92ee1849.js",
       "static/chunks/app/[slug]/page-621acd4256f5a1a0.js"
     ],
-    "/profile/page": [
+    "/success/page": [
       "static/chunks/webpack-a785c941f80c2152.js",
       "static/chunks/fd9d1056-78e5f27b69484e13.js",
       "static/chunks/23-398254ad75ac185b.js",
       "static/chunks/main-app-fc55c2c0eef530bc.js",
-      "static/chunks/app/profile/page-da46bbc12339a709.js"
-    ],
-    "/page": [
-      "static/chunks/webpack-a785c941f80c2152.js",
-      "static/chunks/fd9d1056-78e5f27b69484e13.js",
-      "static/chunks/23-398254ad75ac185b.js",
-      "static/chunks/main-app-fc55c2c0eef530bc.js",
-      "static/chunks/231-0bc5f84ad5be0989.js",
-      "static/chunks/173-2fe1c63bc01cd0fd.js",
-      "static/chunks/app/page-968e21c58f927383.js"
+      "static/chunks/app/success/page-4c0d8a9b985e263a.js"
     ],
     "/orders/[id]/page": [
       "static/chunks/webpack-a785c941f80c2152.js",
@@ -61,6 +52,13 @@
       "static/chunks/231-0bc5f84ad5be0989.js",
       "static/chunks/app/orders/[id]/page-1b028feb33a567e7.js"
     ],
+    "/profile/page": [
+      "static/chunks/webpack-a785c941f80c2152.js",
+      "static/chunks/fd9d1056-78e5f27b69484e13.js",
+      "static/chunks/23-398254ad75ac185b.js",
+      "static/chunks/main-app-fc55c2c0eef530bc.js",
+      "static/chunks/app/profile/page-da46bbc12339a709.js"
+    ],
     "/login/page": [
       "static/chunks/webpack-a785c941f80c2152.js",
       "static/chunks/fd9d1056-78e5f27b69484e13.js",
@@ -69,12 +67,14 @@
       "static/chunks/442-544739ca92ee1849.js",
       "static/chunks/app/login/page-1a719c4812f8188a.js"
     ],
-    "/success/page": [
+    "/page": [
       "static/chunks/webpack-a785c941f80c2152.js",
       "static/chunks/fd9d1056-78e5f27b69484e13.js",
       "static/chunks/23-398254ad75ac185b.js",
       "static/chunks/main-app-fc55c2c0eef530bc.js",
-      "static/chunks/app/success/page-4c0d8a9b985e263a.js"
+      "static/chunks/231-0bc5f84ad5be0989.js",
+      "static/chunks/173-2fe1c63bc01cd0fd.js",
+      "static/chunks/app/page-968e21c58f927383.js"
     ]
   }
 }
