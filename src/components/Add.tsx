@@ -37,7 +37,7 @@ const Add = ({
           <div className="bg-gray-100 py-2 px-4 rounded-3xl flex items-center justify-between w-32">
             <button
               className={`cursor-pointer text-xl ${
-                quantity === 1 ? "opacity-40 cursor-not-allowed" : ""
+                quantity === 1 ? "cursor-not-allowed opacity-40" : ""
               }`}
               onClick={() => handleQuantity("d")}
               disabled={quantity === 1}
@@ -47,7 +47,7 @@ const Add = ({
             {quantity}
             <button
               className={`cursor-pointer text-xl ${
-                quantity === stockNumber ? "opacity-40 cursor-not-allowed" : ""
+                quantity === stockNumber ? "cursor-not-allowed opacity-40" : ""
               }`}
               onClick={() => handleQuantity("i")}
               disabled={quantity === stockNumber}
