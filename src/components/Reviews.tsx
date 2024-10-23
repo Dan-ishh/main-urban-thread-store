@@ -6,11 +6,9 @@ const Reviews = async ({ productId }: { productId: string }) => {
   );
   const reviews = await reviewRes.json();
 
-  console.log("recview", reviews);
-
   return (
     <>
-      <h1 className="text-2xl">User Reviews</h1>
+      {reviews.data?.length > 0 && <h1 className="text-2xl">User Reviews</h1>}
 
       {reviews.data.map((review: any) => (
         <div className="flex flex-col gap-4" key={review.id}>

@@ -1,10 +1,9 @@
-import React from "react";
+import React, { Suspense } from "react";
 import Add from "@/components/Add";
 import CustomizeProducts from "@/components/CustomizeProducts";
 import ProductImages from "@/components/ProductImages";
 import { wixClientServer } from "@/lib/wixClientServer";
 import { notFound } from "next/navigation";
-import { Suspense } from "react";
 import Reviews from "@/components/Reviews";
 import Skeleton from "@/components/Skeleton";
 import DOMPurify from "dompurify";
@@ -18,7 +17,6 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
     .eq("slug", params.slug)
     .find();
 
-  console.log("Products", products);
   if (!products.items[0]) {
     return notFound();
   }

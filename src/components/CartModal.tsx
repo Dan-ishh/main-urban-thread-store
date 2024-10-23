@@ -50,6 +50,13 @@ const CartModal = () => {
           {/* LIST */}
           <div className="flex flex-col gap-8">
             {/* ITEM */}
+            {cart.lineItems?.length === 0 && (
+              <>
+                <p className="text-gray-500 text-sm mt-2 mb-4">
+                  No items in the Cart!
+                </p>
+              </>
+            )}
             {cart.lineItems.map((item) => (
               <div className="flex gap-4" key={item._id}>
                 {item.image && (
@@ -117,8 +124,8 @@ const CartModal = () => {
                 View Cart
               </button> */}
               <button
-                className="rounded-md py-3 px-4 bg-black text-white disabled:cursor-not-allowed disabled:opacity-75"
-                disabled={isLoading}
+                className="rounded-md py-3 px-4 bg-black text-white disabled:cursor-not-allowed disabled:opacity-25"
+                disabled={isLoading || cart.lineItems?.length === 0}
                 onClick={handleCheckout}
               >
                 Checkout

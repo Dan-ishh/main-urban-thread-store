@@ -32,7 +32,7 @@ const Add = ({
   return (
     <div className="flex flex-col gap-4">
       <h1 className="font-medium">Quantity</h1>
-      <div className="flex justify-between">
+      <div className="flex flex-col justify-between sm:flex-row">
         <div className="flex items-center gap-4">
           <div className="bg-gray-100 py-2 px-4 rounded-3xl flex items-center justify-between w-32">
             <button
@@ -71,8 +71,8 @@ const Add = ({
 
         <button
           onClick={() => addItem(wixClient, productId, variantId, quantity)}
-          disabled={isLoading}
-          className="rounded-2xl ring-1 ring-primary text-primary py-2 px-4 text-sm hover:bg-primary hover:text-white w-max disabled:cursor-not-allowed disabled:text-white disabled:bg-gray-200 disabled:ring-none"
+          disabled={isLoading || !variantId}
+          className="rounded-2xl ring-1 ring-primary text-primary py-2 px-4 text-sm hover:bg-primary hover:text-white w-max disabled:text-white disabled:bg-gray-600 disabled:ring-none disabled:cursor-not-allowed disabled:ring-gray-600 disabled:opacity-75 mt-4 sm:mt-0"
         >
           Add to Cart
         </button>
