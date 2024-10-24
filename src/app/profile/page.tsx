@@ -1,5 +1,3 @@
-// "use client";
-
 import Skeleton from "@/components/Skeleton";
 import UpdateButton from "@/components/UpdateButton";
 import { updateUser } from "@/lib/actions";
