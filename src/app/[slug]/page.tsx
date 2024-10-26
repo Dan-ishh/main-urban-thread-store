@@ -9,7 +9,6 @@ import Skeleton from "@/components/Skeleton";
 import DOMPurify from "dompurify";
 
 const SinglePage = async ({ params }: { params: { slug: string } }) => {
-  console.log("inside");
   const wixClient = await wixClientServer();
 
   const products = await wixClient.products
@@ -75,6 +74,7 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
             productId={product._id!}
             variantId="00000000-0000-0000-0000-000000000000"
             stockNumber={product.stock?.quantity || 0}
+            selectedOptions={{}}
           />
         )}
         {product.additionalInfoSections &&
@@ -83,7 +83,6 @@ const SinglePage = async ({ params }: { params: { slug: string } }) => {
           )}
 
         {product.additionalInfoSections?.map((section: any) => {
-          console.log("section", section);
           return (
             <div className="text-sm" key={section.title}>
               <h4 className="font-medium mb-4">{section.title}</h4>

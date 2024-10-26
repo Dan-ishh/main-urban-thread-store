@@ -12,7 +12,7 @@ const Add = ({
   productId: string;
   variantId: string;
   stockNumber: number;
-  selectedOptions: [key: string];
+  selectedOptions: { [key: string]: string };
 }) => {
   const [quantity, setQuantity] = useState(1);
 
@@ -32,7 +32,7 @@ const Add = ({
 
   const { addItem, isLoading } = useCartStore();
 
-  const hasColorAndSize = (options) => {
+  const hasColorAndSize = (options: any) => {
     return options.Color && options.Size;
   };
 
