@@ -7,10 +7,12 @@ const Add = ({
   productId,
   variantId,
   stockNumber,
+  selectedOptions,
 }: {
   productId: string;
   variantId: string;
   stockNumber: number;
+  selectedOptions: [key: string];
 }) => {
   const [quantity, setQuantity] = useState(1);
 
@@ -29,10 +31,14 @@ const Add = ({
   const wixClient = useWixClient();
 
   const { addItem, isLoading } = useCartStore();
-  return (
-    <div className="flex flex-col gap-4">
-      <h1 className="font-medium">Quantity</h1>
-      <div className="flex flex-col justify-between sm:flex-row">
+
+  const hasColorAndSize = (options) => {
+    return options.Color && options.Size;
+  };
+
+  const quantitySelect = () => {
+    if (hasColorAndSize(selectedOptions)) {
+      return (
         <div className="flex items-center gap-4">
           <div className="bg-gray-100 py-2 px-4 rounded-3xl flex items-center justify-between w-32">
             <button
@@ -68,6 +74,16 @@ const Add = ({
             </div>
           )}
         </div>
+      );
+    }
+  };
+  return (
+    <div className="flex flex-col gap-4">
+      <h1 className="font-medium">Quantity</h1>
+      <div className="flex flex-col justify-between sm:flex-row">
+        {/* {selectedOptions && ( */}
+        {quantitySelect()}
+        {/* )} */}
 
         <button
           onClick={() => addItem(wixClient, productId, variantId, quantity)}

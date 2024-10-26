@@ -110,12 +110,23 @@ const CustomizeProducts = ({
           </div>
         </div>
       ))}
+      {(!selectedOptions.Color || !selectedOptions.Size) && (
+        <div className="text-xs">
+          Choose{" "}
+          <span className="text-orange-500 underline font-bold">
+            Color and Size
+          </span>{" "}
+          to select quantity!
+        </div>
+      )}
+
       <Add
         productId={productId}
         variantId={
           selectedVariant?._id || "00000000-0000-0000-0000-000000000000"
         }
         stockNumber={selectedVariant?.stock?.quantity || 0}
+        selectedOptions={selectedOptions}
       />
     </div>
   );
