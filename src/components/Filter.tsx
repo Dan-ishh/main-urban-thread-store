@@ -116,10 +116,9 @@ const Filter = () => {
           name="sort"
           id=""
         >
-          <option disabled selected className="text-zinc-600 opacity-50">
+          <option value="" className="text-zinc-600 opacity-50">
             Sort By
           </option>
-          <option value="">None</option>
           <option value="asc price">Price (low to high)</option>
           <option value="desc price">Price (high to low)</option>
           <option value="asc lastUpdated">Newest</option>
