@@ -90,7 +90,7 @@ const Filter = () => {
           <option value="desc lastUpdated">Oldest</option>
         </select>
       </div> */}
-      <div className="relative group rounded-lg w-full sm:w-52 overflow-hidden before:absolute before:w-12 before:h-12 before:content[''] before:right-0  before:rounded-full before:blur-lg mt-4 md:mt-0 bg-zinc-200 text-zinc-600 font-mono placeholder:text-zinc-600 placeholder:opacity-50 ring-1 ring-zinc-400 focus:ring-2 focus:ring-neutral-900">
+      <div className="relative group rounded-lg w-full sm:w-52 overflow-hidden before:absolute before:w-12 before:h-12 before:content[''] before:right-0  before:rounded-full before:blur-lg mt-4 md:mt-0 bg-zinc-200 text-zinc-600 font-mono ring-1 ring-zinc-400 focus:ring-2 shadow-md">
         <svg
           y="0"
           xmlns="http://www.w3.org/2000/svg"
@@ -111,12 +111,15 @@ const Filter = () => {
           ></path>
         </svg>
         <select
-          className="appearance-none relative text-zinc-600 bg-transparent ring-0 outline-none border border-neutral-500 placeholder-neutral-700 text-sm rounded-lg focus:ring-neutral-500 focus:border-neutral-500 block w-full p-2.5"
+          className="appearance-none relative bg-transparent ring-0 outline-none border ring-zinc-400 text-sm rounded-lg focus:ring-2 focus:border-neutral-500 block w-full p-2.5"
           onChange={handleFilterChange}
           name="sort"
           id=""
         >
-          <option>Sort By</option>
+          <option disabled selected className="text-zinc-600 opacity-50">
+            Sort By
+          </option>
+          <option value="">None</option>
           <option value="asc price">Price (low to high)</option>
           <option value="desc price">Price (high to low)</option>
           <option value="asc lastUpdated">Newest</option>
