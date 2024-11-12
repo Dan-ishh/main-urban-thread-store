@@ -32,36 +32,36 @@ const Footer = () => {
             <Image
               src="/facebook.png"
               alt=""
-              height={40}
-              width={20}
+              height={42}
+              width={24}
               className="cursor-pointer"
             />
             <Image
-              src="/instagram.png"
+              src="/insta.png"
               alt=""
-              height={40}
-              width={20}
+              height={42}
+              width={24}
               className="cursor-pointer"
             />
-            <Image
+            {/* <Image
               src="/youtube.png"
               alt=""
-              height={40}
-              width={20}
+              height={42}
+              width={24}
+              className="cursor-pointer"
+            /> */}
+            <Image
+              src="/pinte.png"
+              alt=""
+              height={42}
+              width={24}
               className="cursor-pointer"
             />
             <Image
-              src="/pinterest.png"
+              src="/twitter.png"
               alt=""
-              height={40}
-              width={20}
-              className="cursor-pointer"
-            />
-            <Image
-              src="/x.png"
-              alt=""
-              height={40}
-              width={20}
+              height={42}
+              width={24}
               className="cursor-pointer"
             />
           </div>
@@ -149,14 +149,14 @@ const Footer = () => {
             <Image src="/paypal.png" alt="" height={40} width={28} />
             <Image src="/mastercard.png" alt="" height={40} width={28} />
             <Image src="/visa.png" alt="" height={40} width={28} />
-            <Image src="/skrill.png" alt="" height={40} width={28} />
-            <Image src="/discover.png" alt="" height={40} width={28} />
+            {/* <Image src="/skrill.png" alt="" height={40} width={28} />
+            <Image src="/discover.png" alt="" height={40} width={28} /> */}
           </div>
         </div>
       </div>
       {/* BOTTOM */}
       <div className="flex flex-col md:flex-row justify-between  gap-8 mt-16 text-left">
-        <div>© 2024 Urban Thread</div>
+        <div>© 2424 Urban Thread</div>
         <div className="flex flex-col gap-8 md:flex-row">
           <div>
             <span className="text-gray-500 mr-4">Language</span>

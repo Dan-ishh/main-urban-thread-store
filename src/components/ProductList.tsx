@@ -22,10 +22,6 @@ const ProductList = async ({
     .queryProducts()
     .startsWith("name", searchParams?.name || "")
     .eq("collectionIds", categoryId!)
-    .hasSome(
-      "productType",
-      searchParams?.type ? [searchParams.type] : ["physical", "digital"]
-    )
     .gt("priceData.price", searchParams?.min || 0)
     .lt("priceData.price", searchParams?.max || 999999)
     .limit(limit || PRODUCT_PER_PAGE)
@@ -35,10 +31,16 @@ const ProductList = async ({
         : 0
     );
   // .find();
+  // .hasSome(
+  //   "productType",
+  //   searchParams?.type ? [searchParams.type] : ["physical", "digital"]
+  // )
 
+  console.log("searchParams", searchParams);
   if (searchParams?.sort) {
     const [sortType, sortBy] = searchParams.sort.split(" ");
 
+    console.log("sortType, sortBy", sortType, sortBy);
     if (sortType === "asc") {
       productQuery.ascending(sortBy);
     }
