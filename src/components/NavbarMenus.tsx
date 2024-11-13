@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import CartModal from "./CartModal";
 import { useWixClient } from "@/hooks/useWixClient";
 import Cookies from "js-cookie";
@@ -13,12 +13,30 @@ const NavbarMenus = () => {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const cartRef = useRef<HTMLDivElement>(null);
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (cartRef.current && !cartRef.current.contains(event.target as Node)) {
+      setIsCartOpen(false);
+    }
+  };
 
   const router = useRouter();
   const pathName = usePathname();
 
   const wixClient = useWixClient();
   const isLoggedIn = wixClient.auth.loggedIn();
+
+  useEffect(() => {
+    if (isCartOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isCartOpen]);
 
   // TEMPORARY
   // const isLoggedIn = false;
@@ -114,7 +132,11 @@ const NavbarMenus = () => {
           {counter}
         </div>
       </div>
-      {isCartOpen && <CartModal />}
+      {isCartOpen && (
+        <div className="absolute top-0 left-32" ref={cartRef}>
+          <CartModal />
+        </div>
+      )}
     </div>
   );
 };
